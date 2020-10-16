@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StateResolverModule } from './modules/state-resolver';
-import { TransactionModule } from './modules/transaction';
+import { ShowTransactionsModule } from './modules/show-transactions';
+import { AddTransactionModule } from './modules/add-transaction';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { TransactionModule } from './modules/transaction';
   imports: [
       BrowserModule,
       StateResolverModule,
-      TransactionModule,
+      AddTransactionModule,
+      ShowTransactionsModule,
       ReactiveFormsModule,
       AppRoutingModule
   ],

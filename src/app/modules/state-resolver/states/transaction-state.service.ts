@@ -3,7 +3,7 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { Transaction } from 'src/app/model/transaction';
 import { TransactionRepositoryService } from '../../database';
-import { AddTransaction } from '..';
+import { AddTransaction } from '../actions/addTransaction';
 
 export class TransactionStateModel {
     Transactions: Transaction[];

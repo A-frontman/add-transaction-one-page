@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxsModule } from '@ngxs/store';
-import { TransactionStateService } from '.';
 import { DatabaseModule } from '../database';
+import { TransactionStateService } from './states/transaction-state.service';
 
 @NgModule({
   declarations: [],
@@ -11,7 +11,6 @@ import { DatabaseModule } from '../database';
     DatabaseModule,
     NgxsModule.forRoot([
       TransactionStateService
-  ]),
-  ]
+  ])]
 })
 export class StateResolverModule { }

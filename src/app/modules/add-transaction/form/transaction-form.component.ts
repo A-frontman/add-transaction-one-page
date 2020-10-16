@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Transaction } from 'src/app/model/transaction';
-import { AddTransaction } from '../../state-resolver';
+import { AddTransaction } from 'src/app/modules/state-resolver';
 
 @Component({
   selector: 'app-transaction-form',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Transaction } from 'src/app/model/transaction';
-import { GetTransactions, TransactionStateService } from '../../state-resolver';
+import { GetTransactions, TransactionStateService } from 'src/app/modules/state-resolver';
 
 @Component({
   selector: 'app-transaction-list',

@@ -1,4 +1,4 @@
-export * from './actions/addTransaction'
-export * from './actions/getTransactions'
-export * from './states/transaction-state.service'
-export * from './state-resolver.module'
+export { StateResolverModule } from './state-resolver.module'
+export { AddTransaction } from './actions/addTransaction'
+export { GetTransactions } from './actions/getTransactions'
+export { TransactionStateService } from './states/transaction-state.service'

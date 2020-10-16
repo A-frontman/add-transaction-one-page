@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Transaction } from 'src/app/model/transaction';
-import { IDatabaseConnetion, ITransactionEntity } from '.';
+import { IDatabaseConnetion } from './database-connection';
+import { ITransactionEntity } from './transaction-entity';
 
 @Injectable({
     providedIn: 'root'
