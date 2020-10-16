@@ -23,7 +23,7 @@ export class TransactionStateService {
 
     @Selector()
     static getTransactionList(state: TransactionStateModel): Transaction[] {
-        return [...state.Transactions];
+        return state.Transactions;
     }
 
     @Action(GetTransactions)
@@ -37,11 +37,9 @@ export class TransactionStateService {
     }
 
     @Action(AddTransaction)
-    public addTransaction({ getState, patchState }: StateContext<TransactionStateModel>, { payload }: AddTransaction) {
+    addTransaction({ getState, patchState }: StateContext<TransactionStateModel>, { payload }: AddTransaction) {
         const newTransaction = this.transactionRepositoryService.addTransaction(payload);
-
         const state = getState();
-        
         return patchState({
             Transactions: [...state.Transactions, newTransaction]
         });
