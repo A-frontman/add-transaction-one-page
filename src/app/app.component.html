@@ -1,0 +1,4 @@
+<div *ngFor="let transaction of transactions | async">
+  {{ transaction?.name }}
+</div>
+<button (click)="addTransaction()">Add new</button>
