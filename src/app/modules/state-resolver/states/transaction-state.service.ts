@@ -1,9 +1,9 @@
 import { GetTransactions } from '../actions/getTransactions';
-import { Transaction } from '../model/transaction';
-import { TransactionService } from '../transaction-service';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { AddTransaction } from '../actions/addTransaction';
+import { Transaction } from 'src/app/model/transaction';
+import { TransactionRepositoryService } from '../../database';
+import { AddTransaction } from '..';
 
 export class TransactionStateModel {
     Transactions: Transaction[];
@@ -16,9 +16,9 @@ export class TransactionStateModel {
         Transactions: [],
     }
 })
-export class TransactionState {
+export class TransactionStateService {
 
-    constructor(private readonly transactionService: TransactionService) {
+    constructor(private readonly transactionRepositoryService: TransactionRepositoryService) {
     }
 
     @Selector()
@@ -29,7 +29,7 @@ export class TransactionState {
     @Action(GetTransactions)
     getTransactions({ getState, setState }: StateContext<TransactionStateModel>) {
         const state = getState();
-        const transactions = this.transactionService.fetchTransactions();
+        const transactions = this.transactionRepositoryService.fetchTransactions();
         return setState({
             ...state,
             Transactions: transactions,
@@ -38,7 +38,7 @@ export class TransactionState {
 
     @Action(AddTransaction)
     public addTransaction({ getState, patchState }: StateContext<TransactionStateModel>, { payload }: AddTransaction) {
-        const newTransaction = this.transactionService.addTransaction(payload);
+        const newTransaction = this.transactionRepositoryService.addTransaction(payload);
 
         const state = getState();
         return patchState({

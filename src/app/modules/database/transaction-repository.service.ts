@@ -1,14 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { Transaction } from './model/transaction';
-import { IDatabaseConnetion } from './database/database-connection';
-import { Observable, Subject } from 'rxjs';
-import { TransactionState } from './states/transaction.state';
-import { ITransactionEntity } from './database/transaction-entity';
+import { Transaction } from 'src/app/model/transaction';
+import { IDatabaseConnetion, ITransactionEntity } from '.';
 
 @Injectable({
     providedIn: 'root'
 })
-export class TransactionService {
+export class TransactionRepositoryService {
     public constructor(
         @Inject('IDatabaseConnetion') private readonly database: IDatabaseConnetion
     ) {

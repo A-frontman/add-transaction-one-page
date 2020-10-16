@@ -1,31 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TransactionState } from './states/transaction.state';
-import { DatabaseConnetion } from './database/database-connection';
-import { NgxsModule } from '@ngxs/store';
-import { TransactionService } from './transaction-service';
+import { StateResolverModule } from './modules/state-resolver';
+import { TransactionModule } from './modules/transaction';
 
 @NgModule({
   declarations: [
-      AppComponent,
-      // ListComponent,
-      // FormComponent
+      AppComponent
   ],
   imports: [
       BrowserModule,
-      NgxsModule.forRoot([
-          TransactionState
-      ]),
+      StateResolverModule,
+      TransactionModule,
       ReactiveFormsModule,
       AppRoutingModule
   ],
-  providers: [
-    { provide: 'IDatabaseConnetion', useClass: DatabaseConnetion },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

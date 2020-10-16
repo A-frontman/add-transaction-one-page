@@ -1,4 +1,4 @@
-import { ITransactionEntity } from './transaction-entity';
+import { ITransactionEntity } from '.';
 import * as transactionsTable from './mock/transactions.json';
 
 export interface IDatabaseConnetion {
