@@ -1,5 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
+import { BankAccount } from 'src/app/model/bank-account';
 import { Transaction } from 'src/app/model/transaction';
+import { TransactionType } from 'src/app/model/transaction-type.enum';
+import { AccountFactoryService } from 'src/app/services/account-factory.service';
 import { IDatabaseConnetion } from './database-connection';
 import { ITransactionEntity } from './transaction-entity';
 
@@ -8,7 +11,8 @@ import { ITransactionEntity } from './transaction-entity';
 })
 export class TransactionRepositoryService {
     public constructor(
-        @Inject('IDatabaseConnetion') private readonly database: IDatabaseConnetion
+        @Inject('IDatabaseConnetion') private readonly database: IDatabaseConnetion,
+        private readonly accountFactory: AccountFactoryService
     ) {
     }
 
@@ -23,7 +27,14 @@ export class TransactionRepositoryService {
         }
         const transactions: Transaction[] = [];
         entities.forEach((entity) => {
-            transactions.push(new Transaction(entity.merchant.name));
+            const account = this.accountFactory.getFriendlyAccount(
+                entity.merchant.name, entity.merchant.accountNumber, '');
+
+            transactions.push(new Transaction(
+                account,
+                entity?.transaction?.amountCurrency?.amount,
+                entity?.dates?.valueDate,
+                entity?.transaction?.type as TransactionType));
         });
 
         return transactions;

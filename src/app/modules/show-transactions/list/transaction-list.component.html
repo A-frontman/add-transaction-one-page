@@ -1,3 +1,5 @@
 <div *ngFor="let transaction of transactions | async">
-  {{ transaction?.name }}
+  {{ transaction?.account?.name }}
+  {{ transaction?.amount }}
+
 </div>
