@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private _saldo = 5824.76;
+  public saldo = 5824.76;
 
-  public saldo(): number {
-    return this._saldo;
+  public updateSaldo(amount: number): void {
+    this.saldo -= amount;
   }
 
-  public updateSaldo(): void {
-
+  public validateSaldo(amount: number): boolean {
+      return this.saldo - amount > -500;
   }
 }

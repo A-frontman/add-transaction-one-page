@@ -2,14 +2,12 @@
     <div class="card-body">
         <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <!-- <label class="col-md-4">From Account</label> -->
-                <!-- <input type="number" class="form-control" formControlName="fromAccount" #fromAccount/> -->
-                <!-- <div *ngIf="transactionForm.controls['fromAccount'].invalid && (transactionForm.controls['fromAccount'].dirty || transactionForm.controls['fromAccount'].touched)"
+                <label class="col-md-4">From Account</label>
+                <input disabled type="number" class="form-control" formControlName="fromAccount" #fromAccount [(ngModel)]="userService.saldo"/>
+                <div *ngIf="transactionForm.controls['fromAccount'].errors?.debitLimit"
                      class="alert alert-danger">
-                    <div *ngIf="transactionForm.controls['fromAccount'].errors.required">
-                        User Id is required.
-                    </div>
-                </div> -->
+                        Debit limit will be 
+                </div>
             </div>
             <div class="form-group">
                 <label class="col-md-4">To Account</label>
