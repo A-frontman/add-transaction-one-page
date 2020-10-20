@@ -28,7 +28,7 @@ export class TransactionRepositoryService {
         const transactions: Transaction[] = [];
         entities.forEach((entity) => {
             const account = this.accountFactory.getFriendlyAccount(
-                entity.merchant.name, entity.merchant.accountNumber, '');
+                entity.merchant.name, entity.merchant.accountNumber, ' LOGO ');
 
             transactions.push(new Transaction(
                 account,
